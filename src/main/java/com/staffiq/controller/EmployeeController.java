@@ -1,6 +1,7 @@
 package com.staffiq.controller;
 
 
+import com.staffiq.entity.Employee;
 import com.staffiq.model.EmployeeAddRequest;
 import com.staffiq.model.EmployeeAddResponse;
 import com.staffiq.service.EmployeeService;
@@ -18,17 +19,27 @@ public class EmployeeController {
 
 
     @GetMapping("/check")
-    public String check(){
+    public String check() {
         return "Server is Up....";
     }
+
     @PostMapping("/add")
-    public EmployeeAddResponse addEmployee(@RequestBody EmployeeAddRequest data){
+    public EmployeeAddResponse addEmployee(@RequestBody EmployeeAddRequest data) {
         return service.addEmployee(data);
     }
 
-    @GetMapping("/get-all-employee")
-    public List<EmployeeAddResponse> getAllEmployee(){
+    @GetMapping("/employees")
+    public List<EmployeeAddResponse> getAllEmployee() {
         return service.getAllEmployee();
     }
 
+    @GetMapping("/employees/{id}")
+    public EmployeeAddResponse getEmployeeById(@PathVariable Long id) {
+        return service.getEmployeeById(id);
+    }
+
+    @GetMapping("/department/{department}")
+    public List<Employee> getEmployeeByDepartment(@PathVariable String department){
+        return service.getEmployeeByDepartment(department);
+    }
 }

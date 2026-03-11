@@ -5,7 +5,6 @@ import com.staffiq.model.EmployeeAddRequest;
 import com.staffiq.model.EmployeeAddResponse;
 import com.staffiq.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -37,5 +36,16 @@ public class EmployeeService {
             employees.add(response);
         }
         return employees;
+    }
+
+    public EmployeeAddResponse getEmployeeById(Long id){
+        if(id==null) return null;
+        Employee employeeById = repository.findById(id).orElse(null);
+        return employeeById != null? new EmployeeAddResponse( employeeById.getId(),employeeById.getName()) : null;
+    }
+
+
+    public List<Employee> getEmployeeByDepartment(String department) {
+        return repository.findByDepartment(department);
     }
 }
