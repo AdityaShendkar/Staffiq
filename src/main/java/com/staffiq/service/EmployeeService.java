@@ -48,4 +48,16 @@ public class EmployeeService {
     public List<Employee> getEmployeeByDepartment(String department) {
         return repository.findByDepartment(department);
     }
+
+    public Employee updateEmployee(EmployeeAddRequest request, Long id){
+        if (id == null || request == null) return null;
+
+        Employee dbEmployee = repository.findById(id).orElseThrow(()-> new IllegalArgumentException("No Employee found"));
+
+        if (request.getName() != null ) dbEmployee.setName(request.getName());
+        if (request.getDepartment() != null ) dbEmployee.setDepartment(request.getDepartment());
+        if (request.getSalary() != null ) dbEmployee.setSalary(request.getSalary());
+
+        return repository.save(dbEmployee);
+    }
 }

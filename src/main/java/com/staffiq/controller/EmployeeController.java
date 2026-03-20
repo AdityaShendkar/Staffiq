@@ -42,4 +42,9 @@ public class EmployeeController {
     public List<Employee> getEmployeeByDepartment(@PathVariable String department){
         return service.getEmployeeByDepartment(department);
     }
+
+    @PutMapping("/employees/update/{id}")
+    public Employee updateEmployee(@RequestBody EmployeeAddRequest request,@PathVariable  Long id){
+        return service.updateEmployee(request, id);
+    }
 }
