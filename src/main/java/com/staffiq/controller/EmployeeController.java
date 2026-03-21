@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/employee")
@@ -46,5 +47,19 @@ public class EmployeeController {
     @PutMapping("/employees/update/{id}")
     public Employee updateEmployee(@RequestBody EmployeeAddRequest request,@PathVariable  Long id){
         return service.updateEmployee(request, id);
+    }
+
+    @DeleteMapping("employees/delete/{id}")
+    public Map<String, String> deleteEmployee(@PathVariable Long id) {
+        service.deleteEmployee(id);
+
+        return Map.of("status", "Employee has been deleted");
+    }
+
+    @DeleteMapping("employees/delete/all")
+    public Map<String, String> deleteAllEmployees() {
+        service.deleteAllEmployees();
+
+        return Map.of("status", "All Employees has been deleted");
     }
 }

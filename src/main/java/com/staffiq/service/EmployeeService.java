@@ -60,4 +60,12 @@ public class EmployeeService {
 
         return repository.save(dbEmployee);
     }
+
+    public void deleteEmployee(Long id) {
+        repository.deleteById(id);
+    }
+
+    public void deleteAllEmployees() {
+        repository.deleteAll();
+    }
 }
