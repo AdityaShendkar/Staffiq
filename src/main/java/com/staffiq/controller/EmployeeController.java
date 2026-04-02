@@ -5,6 +5,7 @@ import com.staffiq.entity.Employee;
 import com.staffiq.model.EmployeeAddRequest;
 import com.staffiq.model.EmployeeAddResponse;
 import com.staffiq.service.EmployeeService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,7 +26,7 @@ public class EmployeeController {
     }
 
     @PostMapping("/add")
-    public EmployeeAddResponse addEmployee(@RequestBody EmployeeAddRequest data) {
+    public EmployeeAddResponse addEmployee(@Valid @RequestBody EmployeeAddRequest data) {
         return service.addEmployee(data);
     }
 
@@ -34,29 +35,29 @@ public class EmployeeController {
         return service.getAllEmployee();
     }
 
-    @GetMapping("/employees/{id}")
+    @GetMapping("/id/{id}")
     public EmployeeAddResponse getEmployeeById(@PathVariable Long id) {
         return service.getEmployeeById(id);
     }
 
     @GetMapping("/department/{department}")
-    public List<Employee> getEmployeeByDepartment(@PathVariable String department){
+    public List<Employee> getEmployeeByDepartment(@PathVariable String department) {
         return service.getEmployeeByDepartment(department);
     }
 
-    @PutMapping("/employees/update/{id}")
-    public Employee updateEmployee(@RequestBody EmployeeAddRequest request,@PathVariable  Long id){
+    @PutMapping("/update/{id}")
+    public Employee updateEmployee(@RequestBody EmployeeAddRequest request, @PathVariable Long id) {
         return service.updateEmployee(request, id);
     }
 
-    @DeleteMapping("employees/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public Map<String, String> deleteEmployee(@PathVariable Long id) {
         service.deleteEmployee(id);
 
         return Map.of("status", "Employee has been deleted");
     }
 
-    @DeleteMapping("employees/delete/all")
+    @DeleteMapping("/delete/all")
     public Map<String, String> deleteAllEmployees() {
         service.deleteAllEmployees();
 
