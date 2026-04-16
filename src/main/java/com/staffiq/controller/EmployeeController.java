@@ -7,9 +7,12 @@ import com.staffiq.model.EmployeeAddResponse;
 import com.staffiq.service.EmployeeService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+
 import java.util.Map;
 
 @RestController
@@ -31,8 +34,9 @@ public class EmployeeController {
     }
 
     @GetMapping("/employees")
-    public List<EmployeeAddResponse> getAllEmployee() {
-        return service.getAllEmployee();
+    public Page<EmployeeAddResponse> getAllEmployee(
+            @PageableDefault(page = 0, size = 5, sort = "id") Pageable pageable) {
+        return service.getAllEmployee(pageable);
     }
 
     @GetMapping("/id/{id}")
@@ -41,8 +45,10 @@ public class EmployeeController {
     }
 
     @GetMapping("/department/{department}")
-    public List<Employee> getEmployeeByDepartment(@PathVariable String department) {
-        return service.getEmployeeByDepartment(department);
+    public Page<Employee> getEmployeeByDepartment(
+            @PathVariable String department,
+            Pageable pageable) {
+        return service.getEmployeeByDepartment(department, pageable);
     }
 
     @PutMapping("/update/{id}")
