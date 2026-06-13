@@ -17,6 +17,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/employee")
+@CrossOrigin(origins = "http://localhost:5173")
 public class EmployeeController {
 
     @Autowired
@@ -40,7 +41,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/id/{id}")
-    public EmployeeAddResponse getEmployeeById(@PathVariable Long id) {
+    public Employee getEmployeeById(@PathVariable Long id) {
         return service.getEmployeeById(id);
     }
 

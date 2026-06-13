@@ -37,10 +37,10 @@ public class EmployeeService {
         );
     }
 
-    public EmployeeAddResponse getEmployeeById(Long id){
+    public Employee getEmployeeById(Long id){
         if(id==null) return null;
         Employee employeeById = repository.findById(id).orElse(null);
-        return employeeById != null? new EmployeeAddResponse( employeeById.getId(),employeeById.getName()) : null;
+        return employeeById != null? new Employee( employeeById.getId(),employeeById.getName(),employeeById.getDepartment(),employeeById.getSalary()) : null;
     }
 
 
