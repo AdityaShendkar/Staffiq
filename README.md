@@ -14,14 +14,26 @@
 
 ---
 
+## 🌐 Frontend Repository
+
+The React.js frontend for this project is available here:
+
+🔗 Frontend Repository:
+https://github.com/AdityaShendkar/Staffiq-frontend
+
+---
+
 ## 🛠️ Tech Stack
 
-| Technology | Description |
-|---|---|
-| ☕ **Java** | Primary programming language |
-| 🍃 **Spring Boot** | Application framework |
-| 🏗️ **Maven** | Build tool & dependency management |
-| 🗄️ **Spring Data JPA** | Data persistence layer |
+| Technology          | Description                                |
+| ------------------- | ------------------------------------------ |
+| ☕ Java              | Backend programming language               |
+| 🍃 Spring Boot      | Backend application framework              |
+| ⚛️ React.js         | Frontend user interface                    |
+| 🗄️ MySQL           | Relational database management             |
+| 🗃️ Spring Data JPA | Data persistence layer                     |
+| 🔗 REST APIs        | Communication between frontend and backend |
+| 🏗️ Maven           | Build and dependency management            |
 
 ---
 
@@ -133,3 +145,6 @@ java -jar target/Staffiq-*.jar
 ⭐ **If you find this project helpful, please consider giving it a star!** ⭐
 
 </div>
+
+⭐ If you find this project useful, consider giving it a star!
+
